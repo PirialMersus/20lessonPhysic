@@ -3,6 +3,13 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import * as dat from "dat.gui";
 import CANNON from "cannon";
+import px from "../static/textures/environmentMaps/0/px.png";
+import nx from "../static/textures/environmentMaps/0/nx.png";
+import py from "../static/textures/environmentMaps/0/py.png";
+import ny from "../static/textures/environmentMaps/0/ny.png";
+import pz from "../static/textures/environmentMaps/0/pz.png";
+import nz from "../static/textures/environmentMaps/0/nz.png";
+import hit from "../static/sounds/hit.mp3";
 /**
  * hELPER
  */
@@ -56,7 +63,7 @@ const scene = new THREE.Scene();
 /**
  * sound
  */
-const hitSound = new Audio("/sounds/hit.mp3");
+const hitSound = new Audio(hit);
 const playHitSound = (collision) => {
   const impactStrength = collision.contact.getImpactVelocityAlongNormal();
 
@@ -73,14 +80,7 @@ const playHitSound = (collision) => {
 const textureLoader = new THREE.TextureLoader();
 const cubeTextureLoader = new THREE.CubeTextureLoader();
 
-const environmentMapTexture = cubeTextureLoader.load([
-  "/textures/environmentMaps/0/px.png",
-  "/textures/environmentMaps/0/nx.png",
-  "/textures/environmentMaps/0/py.png",
-  "/textures/environmentMaps/0/ny.png",
-  "/textures/environmentMaps/0/pz.png",
-  "/textures/environmentMaps/0/nz.png",
-]);
+const environmentMapTexture = cubeTextureLoader.load([px, nx, py, ny, pz, nz]);
 
 // physics
 
